@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Assessment Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50, #4a6491);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo i {
+            font-size: 3.5rem;
+            color: #ff9800;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-body {
+            padding: 30px;
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .active-section {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .btn-accent {
+            background: linear-gradient(to right, #ff9800, #f57c00);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+        
+        .btn-accent:hover {
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
+        }
+        
+        .btn-success {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+        
+        .btn-success:hover {
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.6);
+        }
+        
+        .settings-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .setting-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+        
+        .setting-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .setting-card.selected {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .setting-card i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .setting-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .setting-desc {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #3498db;
+        }
+        
+        .question-number {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .option {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .option:hover {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .option.selected {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .option input {
+            width: auto;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .timer {
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .progress-container {
+            margin-bottom: 25px;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 40px 30px;
+        }
+        
+        .result-score {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #2ecc71;
+            margin: 20px 0;
+            text-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
+        }
+        
+        .result-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3498db;
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 600;
+        }
+        
+        .review-container {
+            padding: 20px;
+        }
+        
+        .review-question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .answer-status {
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .answer-status.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .answer-status.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .answer-status.unanswered {
+            background-color: #e2e3e5;
+            color: #383d41;
+        }
+        
+        .correct-answer {
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 10px;
+        }
+        
+        .review-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .review-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        /* Enhanced review styles */
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        .option-icon {
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 14px;
+        }
+        
+        .option-icon.correct {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .option-icon.incorrect {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .your-answer-label {
+            font-weight: 600;
+            margin-top: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .your-answer-label.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .your-answer-label.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .correct-answer-container {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .review-summary {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .summary-item {
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 150px;
+        }
+        
+        .summary-item.correct {
+            background: #d4edda;
+        }
+        
+        .summary-item.incorrect {
+            background: #f8d7da;
+        }
+        
+        .summary-item.unanswered {
+            background: #e2e3e5;
+        }
+        
+        .summary-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .summary-label {
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .card-body {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .navigation {
+                flex-direction: column;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .settings-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-score {
+                font-size: 3.5rem;
+            }
+            
+            .review-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .review-summary {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fab fa-linux"></i>
+                <div>
+                    <h1>Linux Mastery Assessment</h1>
+                    <p class="subtitle">Test your Linux knowledge - 100 questions with correct answers</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-user-graduate"></i> Linux Proficiency Test</h2>
+                <div class="timer" id="timerDisplay">60:00</div>
+            </div>
+            
+            <div class="card-body">
+                <!-- Login Section -->
+                <section id="loginSection" class="section active-section">
+                    <h3>Student Information</h3>
+                    <p>Enter your details to begin the assessment:</p>
+                    
+                    <div class="form-group">
+                        <label for="studentName"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="studentName" placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentId"><i class="fas fa-id-card"></i> Student ID (Optional)</label>
+                        <input type="text" id="studentId" placeholder="Enter your student ID">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-cog"></i> Test Configuration</label>
+                        <p>Choose how many questions you want to attempt:</p>
+                        
+                        <div class="settings-cards">
+                            <div class="setting-card" data-questions="10">
+                                <i class="fas fa-file-alt"></i>
+                                <div class="setting-title">10 Questions</div>
+                                <div class="setting-desc">Quick assessment (10-15 minutes)</div>
+                            </div>
+                            
+                            <div class="setting-card" data-questions="25">
+                                <i class="fas fa-tasks"></i>
+                                <div class="setting-title">25 Questions</div>
+                                <div class="setting-desc">Standard test (20-30 minutes)</div>
+                            </div>
+                            
+                            <div class="setting-card selected" data-questions="50">
+                                <i class="fas fa-file-contract"></i>
+                                <div class="setting-title">50 Questions</div>
+                                <div class="setting-desc">Comprehensive assessment (40-50 minutes)</div>
+                            </div>
+                            
+                            <div class="setting-card" data-questions="100">
+                                <i class="fas fa-brain"></i>
+                                <div class="setting-title">100 Questions</div>
+                                <div class="setting-desc">Full mastery test (80-100 minutes)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="startQuizBtn" class="btn btn-block btn-accent">
+                        <i class="fas fa-play"></i> Start Assessment
+                    </button>
+                    
+                    <div class="assessment-info" style="margin-top: 30px; background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Assessment Features</h3>
+                        <ul style="list-style-type: none; padding-left: 10px;">
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60;"></i> 100 Linux questions covering all essential topics</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60;"></i> View correct answers after completion</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60;"></i> Performance analysis and recommendations</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60;"></i> Customizable question count (10-100)</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60;"></i> Enhanced review with clear answer indicators</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quizSection" class="section">
+                    <div class="progress-container">
+                        <div class="progress-text">
+                            <span>Question <span id="currentQuestion">1</span> of <span id="totalQuestions">50</span></span>
+                            <span><span id="answeredCount">0</span> Answered</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progress" class="progress" style="width: 2%"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="questionContainer"></div>
+                    
+                    <div class="navigation">
+                        <button id="prevQuestionBtn" class="btn">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button id="nextQuestionBtn" class="btn btn-accent">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <button id="submitQuizBtn" class="btn btn-block btn-success" style="margin-top: 20px;">
+                        <i class="fas fa-paper-plane"></i> Submit Assessment
+                    </button>
+                </section>
+                
+                <!-- Results Section -->
+                <section id="resultSection" class="section">
+                    <div class="result-container">
+                        <h3><i class="fas fa-chart-line"></i> Assessment Results</h3>
+                        <div class="result-score"><span id="scoreDisplay">0</span>/<span id="maxScore">50</span></div>
+                        <div class="result-text">Score: <span id="percentageDisplay">0</span>%</div>
+                        
+                        <div class="stats">
+                            <div class="stat-card">
+                                <div class="stat-value"><span id="correctAnswers">0</span></div>
+                                <div class="stat-label">Correct Answers</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value"><span id="incorrectAnswers">0</span></div>
+                                <div class="stat-label">Incorrect Answers</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value"><span id="timeTaken">0:00</span></div>
+                                <div class="stat-label">Time Taken</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value"><span id="performanceRank">-</span></div>
+                                <div class="stat-label">Performance Rank</div>
+                            </div>
+                        </div>
+                        
+                        <button id="reviewAnswersBtn" class="btn btn-accent" style="margin-top: 20px;">
+                            <i class="fas fa-search"></i> Review Your Answers
+                        </button>
+                        <button id="retakeQuizBtn" class="btn btn-block" style="margin-top: 10px;">
+                            <i class="fas fa-redo"></i> Take Another Test
+                        </button>
+                    </div>
+                </section>
+                
+                <!-- Review Section -->
+                <section id="reviewSection" class="section">
+                    <div class="review-container">
+                        <h3 class="review-title"><i class="fas fa-file-alt"></i> Review Your Answers</h3>
+                        
+                        <div class="review-summary">
+                            <div class="summary-item correct">
+                                <div class="summary-value" id="reviewCorrect">0</div>
+                                <div class="summary-label">Correct Answers</div>
+                            </div>
+                            <div class="summary-item incorrect">
+                                <div class="summary-value" id="reviewIncorrect">0</div>
+                                <div class="summary-label">Incorrect Answers</div>
+                            </div>
+                            <div class="summary-item unanswered">
+                                <div class="summary-value" id="reviewUnanswered">0</div>
+                                <div class="summary-label">Unanswered</div>
+                            </div>
+                        </div>
+                        
+                        <div id="reviewContent"></div>
+                        <div class="review-navigation">
+                            <button id="backToResultsBtn" class="btn">
+                                <i class="fas fa-arrow-left"></i> Back to Results
+                            </button>
+                            <button id="newTestBtn" class="btn btn-accent">
+                                <i class="fas fa-redo"></i> Start New Test
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <footer style="text-align: center; color: white; margin-top: 20px; opacity: 0.8;">
+            <p>Linux Mastery Assessment Platform &copy; 2023 | IIT Computer Science Department</p>
+        </footer>
+    </div>
+
+    <script>
+        // Full list of 100 Linux questions
+        const allQuestions = [
+            {
+                question: "What does the 'pwd' command stand for?",
+                options: ["Print Working Directory", "Present Working Directory", "Previous Working Directory", "Path Working Directory"],
+                answer: 1
+            },
+            {
+                question: "Which command is used to display Linux system information?",
+                options: ["sysinfo", "system", "uname", "linuxinfo"],
+                answer: 2
+            },
+            {
+                question: "What does the 'whoami' command display?",
+                options: ["System hostname", "Current directory", "Current user", "System time"],
+                answer: 2
+            },
+            {
+                question: "How do you clear the terminal screen in Linux?",
+                options: ["clear", "clean", "cls", "reset"],
+                answer: 0
+            },
+            {
+                question: "What is the purpose of the 'history' command?",
+                options: ["Show system history", "Display command history", "Show file history", "Display user login history"],
+                answer: 1
+            },
+            {
+                question: "Which command is used to create a new directory?",
+                options: ["cd", "mkdir", "newdir", "dircreate"],
+                answer: 1
+            },
+            {
+                question: "What does the 'cd ..' command do?",
+                options: ["Goes to home directory", "Goes to root directory", "Goes to parent directory", "Goes to previous directory"],
+                answer: 2
+            },
+            {
+                question: "Which command is used to create a file using the vi editor?",
+                options: ["vi <filename>", "create <filename>", "new <filename>", "vim new <filename>"],
+                answer: 0
+            },
+            {
+                question: "How do you save and exit in vi editor?",
+                options: [":wq", ":q", ":exit", ":saveexit"],
+                answer: 0
+            },
+            {
+                question: "Which command is used to list directory contents?",
+                options: ["dir", "list", "ls", "show"],
+                answer: 2
+            },
+            {
+                question: "What does 'ls -l' display?",
+                options: ["Long listing format", "List hidden files", "List in reverse order", "List with file sizes"],
+                answer: 0
+            },
+            {
+                question: "Which command is used to create an empty file?",
+                options: ["new", "create", "touch", "emptyfile"],
+                answer: 2
+            },
+            {
+                question: "What does the 'rm' command do?",
+                options: ["Rename files", "Move files", "Remove files", "Copy files"],
+                answer: 2
+            },
+            {
+                question: "Which command displays file contents?",
+                options: ["display", "show", "cat", "view"],
+                answer: 2
+            },
+            {
+                question: "What does the 'cp' command do?",
+                options: ["Compare files", "Compress files", "Copy files", "Change permissions"],
+                answer: 2
+            },
+            {
+                question: "What is the purpose of the 'mv' command?",
+                options: ["Move or rename files", "Modify file content", "Verify file integrity", "Mount volumes"],
+                answer: 0
+            },
+            {
+                question: "How do you append to a file using echo?",
+                options: ["echo >", "echo >>", "echo |", "echo -a"],
+                answer: 1
+            },
+            {
+                question: "What does the '~' symbol represent?",
+                options: ["Root directory", "Current directory", "Home directory", "Temporary directory"],
+                answer: 2
+            },
+            {
+                question: "How do you create nested directories with one command?",
+                options: ["mkdir -n", "mkdir -p", "mkdir -r", "mkdir -d"],
+                answer: 1
+            },
+            {
+                question: "Which command removes an empty directory?",
+                options: ["rmdir", "rm -d", "remove", "del"],
+                answer: 0
+            },
+            {
+                question: "What does the 'chmod' command do?",
+                options: ["Change file owner", "Change file permissions", "Change directory", "Change file content"],
+                answer: 1
+            },
+            {
+                question: "What does 755 represent in chmod?",
+                options: ["rwxr-xr-x", "rw-r--r--", "rwxrwxrwx", "r--r--r--"],
+                answer: 0
+            },
+            {
+                question: "What is the core component of the Linux operating system?",
+                options: ["Shell", "GUI", "Kernel", "Utilities"],
+                answer: 2
+            },
+            {
+                question: "Which Linux distribution is known for its stability in servers?",
+                options: ["Ubuntu", "Fedora", "CentOS", "Kali Linux"],
+                answer: 2
+            },
+            {
+                question: "What does WSL stand for?",
+                options: ["Windows Subsystem for Linux", "Windows System Linux", "Web Service Linux", "Workstation System Layer"],
+                answer: 0
+            },
+            {
+                question: "What is the main advantage of Linux?",
+                options: ["Free and open source", "Proprietary software", "Limited customization", "Windows compatibility"],
+                answer: 0
+            },
+            {
+                question: "What is a hard link in Linux?",
+                options: ["A shortcut to a file", "A reference to the same inode", "A compressed file", "A symbolic reference"],
+                answer: 1
+            },
+            {
+                question: "Which command creates links between files?",
+                options: ["link", "ln", "connect", "ref"],
+                answer: 1
+            },
+            {
+                question: "What is the purpose of the 'alias' command?",
+                options: ["Create command shortcuts", "List system aliases", "Create file aliases", "Set system variables"],
+                answer: 0
+            },
+            {
+                question: "How do you run a command in the background?",
+                options: ["bg", "&", "runbg", "background"],
+                answer: 1
+            },
+            {
+                question: "What does the 'nohup' command do?",
+                options: ["No hangup - run command immune to hangups", "No hardware usage", "No history update", "No output display"],
+                answer: 0
+            },
+            {
+                question: "Which command displays system processes?",
+                options: ["process", "ps", "procs", "tasks"],
+                answer: 1
+            },
+            {
+                question: "How do you terminate a process?",
+                options: ["stop", "end", "terminate", "kill"],
+                answer: 3
+            },
+            {
+                question: "Which option shows all processes for all users?",
+                options: ["ps -u", "ps -a", "ps -x", "ps -aux"],
+                answer: 3
+            },
+            {
+                question: "What does the 'grep' command do?",
+                options: ["Search file contents", "Group files", "Graph results", "Generate reports"],
+                answer: 0
+            },
+            {
+                question: "How do you download files from the internet?",
+                options: ["download", "get", "wget", "fetch"],
+                answer: 2
+            },
+            {
+                question: "What does 'df -h' display?",
+                options: ["Disk space in human-readable format", "Detailed file information", "Directory hierarchy", "Disk fragmentation"],
+                answer: 0
+            },
+            {
+                question: "Which command compresses files using zip?",
+                options: ["zip", "compress", "gzip", "pack"],
+                answer: 0
+            },
+            {
+                question: "What does 'tar' stand for?",
+                options: ["Tape Archive", "Temporary Archive", "Total Archive", "Target Archive"],
+                answer: 0
+            },
+            {
+                question: "Which command shows memory usage?",
+                options: ["mem", "free", "memory", "meminfo"],
+                answer: 1
+            },
+            {
+                question: "What does 'wc' command count?",
+                options: ["Words, characters, lines", "Word count only", "File size", "Number of files"],
+                answer: 0
+            },
+            {
+                question: "How do you sort file contents?",
+                options: ["arrange", "sort", "order", "sequence"],
+                answer: 1
+            },
+            {
+                question: "What does 'head' command display?",
+                options: ["End of a file", "Middle of a file", "Beginning of a file", "Random part of a file"],
+                answer: 2
+            },
+            {
+                question: "Which command provides secure remote access?",
+                options: ["ssh", "telnet", "rlogin", "remote"],
+                answer: 0
+            },
+            {
+                question: "What does SCP stand for?",
+                options: ["Secure Copy Protocol", "System Control Protocol", "Secure Connection Protocol", "System Copy Program"],
+                answer: 0
+            },
+            {
+                question: "Which command displays network configuration?",
+                options: ["netstat", "ifconfig", "ipconfig", "netinfo"],
+                answer: 1
+            },
+            {
+                question: "How do you schedule tasks in Linux?",
+                options: ["scheduler", "cron", "tasker", "planner"],
+                answer: 1
+            },
+            {
+                question: "What is the purpose of virtual environments?",
+                options: ["Create virtual machines", "Isolate Python environments", "Create virtual networks", "Simulate hardware"],
+                answer: 1
+            },
+            {
+                question: "What does the shebang (#!) at the start of a script indicate?",
+                options: ["Comment", "Interpreter path", "Script name", "Execution permission"],
+                answer: 1
+            },
+            {
+                question: "Which Linux concept states that 'everything is a file'?",
+                options: ["File abstraction", "Universal file concept", "File hierarchy standard", "Unix philosophy"],
+                answer: 3
+            },
+            {
+                question: "What command shows the last part of a file?",
+                options: ["end", "tail", "last", "foot"],
+                answer: 1
+            },
+            {
+                question: "Which option for 'grep' makes the search case-insensitive?",
+                options: ["-v", "-c", "-i", "-r"],
+                answer: 2
+            },
+            {
+                question: "What does the 'find' command do?",
+                options: ["Search for files", "Locate text in files", "Discover network hosts", "Find user accounts"],
+                answer: 0
+            },
+            {
+                question: "Which command changes file ownership?",
+                options: ["chmod", "chgrp", "chown", "own"],
+                answer: 2
+            },
+            {
+                question: "What is the default shell in most Linux distributions?",
+                options: ["bash", "csh", "ksh", "zsh"],
+                answer: 0
+            },
+            {
+                question: "Which command shows disk usage of files and directories?",
+                options: ["du", "df", "disk", "usage"],
+                answer: 0
+            },
+            {
+                question: "What does the 'sed' command do?",
+                options: ["Search and edit text", "Set environment variables", "Secure data", "Send email"],
+                answer: 0
+            },
+            {
+                question: "Which command archives files without compression?",
+                options: ["tar", "zip", "gzip", "bzip"],
+                answer: 0
+            },
+            {
+                question: "What does 'apt-get' manage?",
+                options: ["Processes", "Packages", "Permissions", "Networks"],
+                answer: 1
+            },
+            {
+                question: "Which file contains environment variables?",
+                options: ["/etc/env", "/var/env", "/etc/profile", "/bin/env"],
+                answer: 2
+            },
+            {
+                question: "What does the 'killall' command do?",
+                options: ["Kill all processes", "Kill by process name", "Kill by user", "Kill by group"],
+                answer: 1
+            },
+            {
+                question: "Which command shows active network connections?",
+                options: ["netstat", "ifconfig", "ping", "traceroute"],
+                answer: 0
+            },
+            {
+                question: "What is the purpose of the 'crontab' command?",
+                options: ["Create tables", "Schedule tasks", "Backup files", "Monitor processes"],
+                answer: 1
+            },
+            {
+                question: "Which command shows the current PATH settings?",
+                options: ["showpath", "path", "echo $PATH", "getpath"],
+                answer: 2
+            },
+            {
+                question: "What does the 'awk' command do?",
+                options: ["Text processing", "File compression", "Network scanning", "System monitoring"],
+                answer: 0
+            },
+            {
+                question: "Which command shows the manual for other commands?",
+                options: ["info", "help", "doc", "man"],
+                answer: 3
+            },
+            {
+                question: "What does the 'su' command do?",
+                options: ["Super user", "Switch user", "Save user", "Set user"],
+                answer: 1
+            },
+            {
+                question: "Which command shows the last logged in users?",
+                options: ["last", "users", "who", "logins"],
+                answer: 0
+            },
+            {
+                question: "What does the 'umask' command do?",
+                options: ["Set file permissions", "Set default permissions", "Unmask files", "Modify user"],
+                answer: 1
+            },
+            {
+                question: "Which command decompresses a .gz file?",
+                options: ["decompress", "gunzip", "unzip", "ungz"],
+                answer: 1
+            },
+            {
+                question: "What does the 'passwd' command do?",
+                options: ["Change password", "Show password", "Generate password", "Store password"],
+                answer: 0
+            },
+            {
+                question: "Which command lists mounted filesystems?",
+                options: ["mount", "mounted", "df", "lsfs"],
+                answer: 0
+            },
+            {
+                question: "What does the 'diff' command do?",
+                options: ["Compare files", "Differentiate files", "Copy differences", "Show file types"],
+                answer: 0
+            },
+            {
+                question: "Which command changes group ownership?",
+                options: ["chgrp", "chown", "chmod", "grpch"],
+                answer: 0
+            },
+            {
+                question: "What does the 'which' command do?",
+                options: ["Find commands", "Show options", "List paths", "Identify files"],
+                answer: 0
+            },
+            {
+                question: "Which command shows kernel messages?",
+                options: ["kmsg", "kernlog", "dmesg", "syslog"],
+                answer: 2
+            },
+            {
+                question: "What does the 'traceroute' command do?",
+                options: ["Trace network path", "Track routes", "Trace files", "Track users"],
+                answer: 0
+            },
+            {
+                question: "Which command lists environment variables?",
+                options: ["env", "set", "printenv", "All of the above"],
+                answer: 3
+            },
+            {
+                question: "What does the 'cut' command do?",
+                options: ["Divide files", "Remove sections", "Extract columns", "Trim files"],
+                answer: 2
+            },
+            {
+                question: "Which command shows disk partitions?",
+                options: ["fdisk", "parted", "lsblk", "All of the above"],
+                answer: 3
+            },
+            {
+                question: "What does the 'ln -s' command create?",
+                options: ["Hard link", "Symbolic link", "System link", "Secure link"],
+                answer: 1
+            },
+            {
+                question: "Which command lists open files?",
+                options: ["openfiles", "lsof", "filelist", "lsopen"],
+                answer: 1
+            },
+            {
+                question: "What does the 'rsync' command do?",
+                options: ["Remote sync", "Run system check", "Read sync", "Reset sync"],
+                answer: 0
+            },
+            {
+                question: "Which command changes the working directory?",
+                options: ["cd", "chdir", "pwd", "Both a and b"],
+                answer: 3
+            },
+            {
+                question: "What does the 'alias' command without parameters do?",
+                options: ["Nothing", "List aliases", "Show help", "Create default alias"],
+                answer: 1
+            },
+            {
+                question: "Which command shows real-time system processes?",
+                options: ["ps", "top", "procs", "process"],
+                answer: 1
+            },
+            {
+                question: "What does the 'chroot' command do?",
+                options: ["Change root password", "Change root directory", "Change root user", "Change root permissions"],
+                answer: 1
+            }
+        ];
+
+        // DOM elements
+        const loginSection = document.getElementById('loginSection');
+        const quizSection = document.getElementById('quizSection');
+        const resultSection = document.getElementById('resultSection');
+        const reviewSection = document.getElementById('reviewSection');
+        const startQuizBtn = document.getElementById('startQuizBtn');
+        const submitQuizBtn = document.getElementById('submitQuizBtn');
+        const prevQuestionBtn = document.getElementById('prevQuestionBtn');
+        const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+        const retakeQuizBtn = document.getElementById('retakeQuizBtn');
+        const reviewAnswersBtn = document.getElementById('reviewAnswersBtn');
+        const backToResultsBtn = document.getElementById('backToResultsBtn');
+        const newTestBtn = document.getElementById('newTestBtn');
+        const questionContainer = document.getElementById('questionContainer');
+        const currentQuestion = document.getElementById('currentQuestion');
+        const totalQuestions = document.getElementById('totalQuestions');
+        const progress = document.getElementById('progress');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const maxScore = document.getElementById('maxScore');
+        const percentageDisplay = document.getElementById('percentageDisplay');
+        const correctAnswers = document.getElementById('correctAnswers');
+        const incorrectAnswers = document.getElementById('incorrectAnswers');
+        const timeTaken = document.getElementById('timeTaken');
+        const performanceRank = document.getElementById('performanceRank');
+        const settingCards = document.querySelectorAll('.setting-card');
+        const reviewContent = document.getElementById('reviewContent');
+        const reviewCorrect = document.getElementById('reviewCorrect');
+        const reviewIncorrect = document.getElementById('reviewIncorrect');
+        const reviewUnanswered = document.getElementById('reviewUnanswered');
+
+        // Quiz state
+        let currentQuestionIndex = 0;
+        let selectedQuestions = [];
+        let studentAnswers = [];
+        let score = 0;
+        let startTime;
+        let timeLeft;
+        let timerInterval;
+        let questionCount = 50; // Default to 50 questions
+
+        // Initialize the application
+        function init() {
+            // Set default selection
+            document.querySelector('.setting-card[data-questions="50"]').classList.add('selected');
+            
+            // Add event listeners to setting cards
+            settingCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    settingCards.forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    questionCount = parseInt(card.getAttribute('data-questions'));
+                });
+            });
+            
+            startQuizBtn.addEventListener('click', startQuiz);
+            submitQuizBtn.addEventListener('click', submitQuiz);
+            prevQuestionBtn.addEventListener('click', showPrevQuestion);
+            nextQuestionBtn.addEventListener('click', showNextQuestion);
+            retakeQuizBtn.addEventListener('click', retakeQuiz);
+            reviewAnswersBtn.addEventListener('click', showReview);
+            backToResultsBtn.addEventListener('click', () => {
+                reviewSection.classList.remove('active-section');
+                resultSection.classList.add('active-section');
+            });
+            newTestBtn.addEventListener('click', retakeQuiz);
+        }
+
+        // Start the quiz
+        function startQuiz() {
+            const studentName = document.getElementById('studentName').value.trim();
+            
+            if (!studentName) {
+                alert('Please enter your name to begin the assessment.');
+                return;
+            }
+            
+            // Select random questions based on the chosen count
+            selectedQuestions = shuffleArray([...allQuestions]).slice(0, questionCount);
+            studentAnswers = new Array(questionCount).fill(null);
+            
+            // Reset state
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            // Set time limit based on question count
+            const timePerQuestion = 60; // 60 seconds per question
+            timeLeft = questionCount * timePerQuestion;
+            
+            startTime = new Date();
+            
+            // Start timer
+            startTimer();
+            
+            // Update UI elements
+            totalQuestions.textContent = questionCount;
+            maxScore.textContent = questionCount;
+            
+            // Show quiz section
+            loginSection.classList.remove('active-section');
+            quizSection.classList.add('active-section');
+            
+            // Display first question
+            showQuestion(currentQuestionIndex);
+        }
+
+        // Shuffle array using Fisher-Yates algorithm
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Start the countdown timer
+        function startTimer() {
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        // Update timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Display a question
+        function showQuestion(index) {
+            const question = selectedQuestions[index];
+            currentQuestion.textContent = index + 1;
+            
+            // Update progress bar
+            const progressPercent = ((index + 1) / questionCount) * 100;
+            progress.style.width = `${progressPercent}%`;
+            
+            // Update answered count
+            const answered = studentAnswers.filter(a => a !== null).length;
+            answeredCount.textContent = answered;
+            
+            // Build question HTML
+            let html = `<div class="question-number">Question ${index + 1} of ${questionCount}</div>`;
+            html += `<div class="question-text">${question.question}</div>`;
+            html += '<div class="options-container">';
+            
+            question.options.forEach((option, optionIndex) => {
+                const isSelected = studentAnswers[index] === optionIndex;
+                html += `
+                    <div class="option ${isSelected ? 'selected' : ''}" data-option="${optionIndex}">
+                        <input type="radio" name="question-${index}" 
+                               id="option-${index}-${optionIndex}" 
+                               ${isSelected ? 'checked' : ''}>
+                        <label for="option-${index}-${optionIndex}">${option}</label>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            
+            questionContainer.innerHTML = html;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const selectedOption = parseInt(option.getAttribute('data-option'));
+                    studentAnswers[index] = selectedOption;
+                    
+                    // Update UI
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    option.classList.add('selected');
+                    option.querySelector('input').checked = true;
+                    
+                    // Update answered count
+                    const answered = studentAnswers.filter(a => a !== null).length;
+                    answeredCount.textContent = answered;
+                });
+            });
+            
+            // Update navigation button visibility
+            prevQuestionBtn.style.display = index === 0 ? 'none' : 'block';
+            nextQuestionBtn.style.display = index === questionCount - 1 ? 'none' : 'block';
+            submitQuizBtn.style.display = index === questionCount - 1 ? 'block' : 'none';
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestionIndex < questionCount - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        // Show previous question
+        function showPrevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        // Submit the quiz
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Calculate score
+            score = 0;
+            for (let i = 0; i < questionCount; i++) {
+                if (studentAnswers[i] === selectedQuestions[i].answer) {
+                    score++;
+                }
+            }
+            
+            // Calculate percentage
+            const percentage = Math.round((score / questionCount) * 100);
+            
+            // Calculate time taken
+            const endTime = new Date();
+            const timeDiff = Math.floor((endTime - startTime) / 1000); // in seconds
+            const minutesTaken = Math.floor(timeDiff / 60);
+            const secondsTaken = timeDiff % 60;
+            
+            // Update result display
+            scoreDisplay.textContent = score;
+            percentageDisplay.textContent = percentage;
+            correctAnswers.textContent = score;
+            incorrectAnswers.textContent = questionCount - score;
+            timeTaken.textContent = `${minutesTaken}:${secondsTaken.toString().padStart(2, '0')}`;
+            
+            // Set performance rank
+            let rank = "Beginner";
+            if (percentage >= 90) rank = "Expert";
+            else if (percentage >= 75) rank = "Advanced";
+            else if (percentage >= 60) rank = "Intermediate";
+            else if (percentage >= 40) rank = "Novice";
+            performanceRank.textContent = rank;
+            
+            // Show result section
+            quizSection.classList.remove('active-section');
+            resultSection.classList.add('active-section');
+        }
+
+        // Show correct answers with enhanced styling
+        function showReview() {
+            resultSection.classList.remove('active-section');
+            reviewSection.classList.add('active-section');
+            
+            let html = "";
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unansweredCount = 0;
+            
+            for (let i = 0; i < questionCount; i++) {
+                const question = selectedQuestions[i];
+                const studentAnswer = studentAnswers[i];
+                const isCorrect = studentAnswer === question.answer;
+                const isAnswered = studentAnswer !== null;
+                
+                if (isCorrect) correctCount++;
+                else if (isAnswered) incorrectCount++;
+                else unansweredCount++;
+                
+                html += `<div class="review-question">`;
+                html += `<div class="question-number">Question ${i + 1} of ${questionCount}</div>`;
+                html += `<div class="question-text">${question.question}</div>`;
+                
+                // Answer status
+                let statusText, statusClass;
+                if (studentAnswer === null) {
+                    statusText = `<i class="fas fa-question-circle"></i> Not answered`;
+                    statusClass = 'unanswered';
+                } else if (isCorrect) {
+                    statusText = `<i class="fas fa-check-circle"></i> Correct`;
+                    statusClass = 'correct';
+                } else {
+                    statusText = `<i class="fas fa-times-circle"></i> Incorrect`;
+                    statusClass = 'incorrect';
+                }
+                
+                html += `<div class="answer-status ${statusClass}">${statusText}</div>`;
+                
+                // Show your answer
+                if (isAnswered) {
+                    const answerClass = isCorrect ? 'correct' : 'incorrect';
+                    html += `<div class="your-answer-label ${answerClass}">`;
+                    html += `<i class="fas fa-user"></i> Your answer: ${question.options[studentAnswer]}`;
+                    html += `</div>`;
+                }
+                
+                // Options
+                html += `<div class="options-container">`;
+                question.options.forEach((option, optionIndex) => {
+                    const isStudentChoice = studentAnswer === optionIndex;
+                    const isCorrectAnswer = question.answer === optionIndex;
+                    
+                    let optionClass = "";
+                    let icon = "";
+                    
+                    if (isStudentChoice && isCorrectAnswer) {
+                        optionClass = "correct";
+                        icon = `<div class="option-icon correct"><i class="fas fa-check"></i></div>`;
+                    } else if (isStudentChoice) {
+                        optionClass = "incorrect";
+                        icon = `<div class="option-icon incorrect"><i class="fas fa-times"></i></div>`;
+                    } else if (isCorrectAnswer) {
+                        optionClass = "correct";
+                        icon = `<div class="option-icon correct"><i class="fas fa-check"></i></div>`;
+                    }
+                    
+                    html += `<div class="option ${optionClass}">`;
+                    html += icon;
+                    html += `<div>${option}</div>`;
+                    html += `</div>`;
+                });
+                html += `</div>`;
+                
+                // Correct answer (if not already shown)
+                if (!isCorrect) {
+                    html += `<div class="correct-answer-container">`;
+                    html += `<i class="fas fa-check-circle"></i> <strong>Correct Answer:</strong> ${question.options[question.answer]}`;
+                    html += `</div>`;
+                }
+                
+                html += `</div>`;
+            }
+            
+            // Update review summary
+            reviewCorrect.textContent = correctCount;
+            reviewIncorrect.textContent = incorrectCount;
+            reviewUnanswered.textContent = unansweredCount;
+            
+            reviewContent.innerHTML = html;
+        }
+
+        // Retake the quiz
+        function retakeQuiz() {
+            // Show login section
+            resultSection.classList.remove('active-section');
+            reviewSection.classList.remove('active-section');
+            loginSection.classList.add('active-section');
+        }
+
+        // Initialize the application when the page loads
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
