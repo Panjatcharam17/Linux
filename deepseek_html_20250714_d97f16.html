@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Master Course Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #4fc3dc;
+            --light: #f5f7fa;
+            --dark: #1e293b;
+            --success: #48bb78;
+            --danger: #e53e3e;
+            --warning: #ed8936;
+            --background: #0f172a;
+            --card-bg: #1e293b;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #0c4a6e);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(79, 195, 220, 0.1) 0%, rgba(79, 195, 220, 0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .python-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--accent);
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 2px solid rgba(79, 195, 220, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 195, 220, 0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn-success {
+            background: linear-gradient(90deg, var(--success), #2f855a);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(90deg, var(--warning), #c05621);
+        }
+        
+        #quiz-section {
+            display: none;
+        }
+        
+        #results-section {
+            display: none;
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: 10px;
+            transition: width 0.5s;
+            box-shadow: 0 0 10px rgba(79, 195, 220, 0.5);
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-weight: 600;
+            margin-top: 15px;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.5;
+            flex: 1;
+        }
+        
+        .timer {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 90px;
+            text-align: center;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .option {
+            padding: 18px 20px;
+            border: 2px solid rgba(79, 195, 220, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--light);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option:hover {
+            background: rgba(26, 51, 85, 0.5);
+            border-color: var(--accent);
+        }
+        
+        .option.selected {
+            background: rgba(26, 51, 85, 0.8);
+            border-color: var(--accent);
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(79, 195, 220, 0.3);
+        }
+        
+        .option-prefix {
+            background: var(--primary);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .result-summary {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-summary::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+        
+        .result-score {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 15px 0;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .result-message {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .stat-box {
+            background: rgba(15, 23, 42, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 10px;
+            flex: 1;
+            min-width: 150px;
+            border: 1px solid rgba(79, 195, 220, 0.3);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .review-container {
+            margin-top: 20px;
+        }
+        
+        .review-item {
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            background: rgba(30, 41, 59, 0.7);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .review-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+        }
+        
+        .review-item.correct::before {
+            background: var(--success);
+        }
+        
+        .review-item.incorrect::before {
+            background: var(--danger);
+        }
+        
+        .explanation {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .result-score {
+                font-size: 3rem;
+            }
+            
+            .result-message {
+                font-size: 1.5rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <i class="fab fa-python python-icon"></i>
+            <h1>Python Master Course Quiz</h1>
+            <p>Test your knowledge with 100 questions covering all Python concepts</p>
+        </header>
+        
+        <!-- User Info Section -->
+        <section id="user-info-section" class="card">
+            <h2 class="section-title">Welcome to the Quiz!</h2>
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i> Enter Your Name:</label>
+                <input type="text" id="username" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="question-count"><i class="fas fa-question-circle"></i> Number of Questions:</label>
+                <select id="question-count">
+                    <option value="10">10 Questions</option>
+                    <option value="20">20 Questions</option>
+                    <option value="30">30 Questions</option>
+                    <option value="50">50 Questions</option>
+                    <option value="100">100 Questions</option>
+                </select>
+            </div>
+            <button id="start-btn" class="btn btn-block">
+                <i class="fas fa-play"></i> Start Quiz
+            </button>
+        </section>
+        
+        <!-- Quiz Section -->
+        <section id="quiz-section" class="card">
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <p id="progress-text" class="progress-text">Question 1 of <span id="total-questions">10</span></p>
+            
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-text" id="question-text">Loading question...</div>
+                    <div class="timer" id="timer">60s</div>
+                </div>
+                <div class="options-container" id="options-container">
+                    <!-- Options will be inserted here -->
+                </div>
+            </div>
+            
+            <div>
+                <button id="prev-btn" class="btn">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button id="next-btn" class="btn" style="float: right;">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="submit-btn" class="btn btn-block btn-success">
+                    <i class="fas fa-paper-plane"></i> Submit Quiz
+                </button>
+            </div>
+        </section>
+        
+        <!-- Results Section -->
+        <section id="results-section" class="card">
+            <div class="result-summary">
+                <h2>Quiz Results</h2>
+                <p id="user-greeting">Congratulations, <span id="result-username"></span>!</p>
+                <div class="result-score">
+                    <span id="score">0</span>/<span id="total">10</span>
+                </div>
+                <p class="result-message" id="result-message">Keep practicing!</p>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Correct Answers</div>
+                        <div class="stat-value" id="correct-answers">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Your Score</div>
+                        <div class="stat-value" id="percentage">0%</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Time Taken</div>
+                        <div class="stat-value" id="time-taken">0s</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h2 class="section-title">Review Your Answers</h2>
+                <div id="review-container"></div>
+                <button id="restart-btn" class="btn btn-block btn-warning">
+                    <i class="fas fa-redo"></i> Take Quiz Again
+                </button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Python Master Course Quiz &copy; 2023 | Test your Python knowledge with 100 questions</p>
+    </footer>
+
+    <script>
+        // Python Master Course Quiz Questions (100 questions)
+        const questions = [
+            {
+                question: "In which year was Python first released?",
+                options: ["1989", "1991", "1995", "2000"],
+                answer: 1,
+                explanation: "Python was first released in February 1991 by Guido van Rossum."
+            },
+            {
+                question: "What does PEP stand for in Python?",
+                options: [
+                    "Python Enhancement Proposal",
+                    "Python Extension Package",
+                    "Programming Enhancement Process",
+                    "Python Execution Protocol"
+                ],
+                answer: 0,
+                explanation: "PEP stands for Python Enhancement Proposal. PEP 8 is the official style guide for Python."
+            },
+            {
+                question: "Which programming paradigms does Python support?",
+                options: [
+                    "Object-oriented only",
+                    "Procedural only",
+                    "Functional only",
+                    "Procedural, object-oriented, and functional"
+                ],
+                answer: 3,
+                explanation: "Python supports multiple programming paradigms including procedural, object-oriented, and functional programming."
+            },
+            {
+                question: "What is the primary purpose of Python's Virtual Machine (PVM)?",
+                options: [
+                    "To compile Python code to machine code",
+                    "To interpret bytecode and execute it",
+                    "To manage Python packages",
+                    "To optimize Python performance"
+                ],
+                answer: 1,
+                explanation: "The Python Virtual Machine (PVM) interprets bytecode and executes it on the host machine."
+            },
+            {
+                question: "What does 'Python is platform independent' mean?",
+                options: [
+                    "Python code runs only on Windows",
+                    "Python code runs only on Linux",
+                    "Python code can run on any operating system",
+                    "Python requires specific hardware"
+                ],
+                answer: 2,
+                explanation: "Platform independence means Python code can run on any operating system without modification."
+            },
+            {
+                question: "Which of these is NOT a valid variable name in Python?",
+                options: ["my_var", "_counter", "123var", "user_name"],
+                answer: 2,
+                explanation: "Variable names cannot start with a number. '123var' is invalid."
+            },
+            {
+                question: "What will be the output of: print(type(3.14))",
+                options: ["<class 'int'>", "<class 'float'>", "<class 'decimal'>", "<class 'number'>"],
+                answer: 1,
+                explanation: "3.14 is a floating-point number, so type() returns <class 'float'>."
+            },
+            {
+                question: "Which data type is immutable in Python?",
+                options: ["List", "Dictionary", "Set", "Tuple"],
+                answer: 3,
+                explanation: "Tuples are immutable, meaning their elements cannot be changed after creation."
+            },
+            {
+                question: "What does the LEGB rule refer to in Python?",
+                options: [
+                    "Loop Execution and Global Behavior",
+                    "Local, Enclosing, Global, Built-in scopes",
+                    "List Element Grouping Basis",
+                    "Logical Expression and Grouping Blocks"
+                ],
+                answer: 1,
+                explanation: "The LEGB rule defines the scope resolution order: Local, Enclosing, Global, Built-in."
+            },
+            {
+                question: "What is the purpose of the 'global' keyword?",
+                options: [
+                    "To define a new global variable",
+                    "To access a global variable inside a function",
+                    "To make a variable accessible everywhere",
+                    "To modify a global variable inside a function"
+                ],
+                answer: 3,
+                explanation: "The 'global' keyword allows you to modify a global variable from within a function."
+            },
+            {
+                question: "What is the output of: print(5 // 2)",
+                options: ["2.5", "2", "3", "2.0"],
+                answer: 1,
+                explanation: "The // operator performs floor division, returning the integer quotient (5 ÷ 2 = 2)."
+            },
+            {
+                question: "Which operator is used for exponentiation in Python?",
+                options: ["^", "**", "^^", "exp()"],
+                answer: 1,
+                explanation: "The ** operator is used for exponentiation (e.g., 2**3 = 8)."
+            },
+            {
+                question: "What is the purpose of the 'pass' statement?",
+                options: [
+                    "To terminate a loop",
+                    "To skip the current iteration",
+                    "To exit a function",
+                    "To act as a placeholder"
+                ],
+                answer: 3,
+                explanation: "The 'pass' statement is a null operation used as a placeholder where syntax requires a statement."
+            },
+            {
+                question: "What does the 'in' keyword do?",
+                options: [
+                    "Checks if a value exists in a sequence",
+                    "Creates a loop",
+                    "Imports a module",
+                    "Defines a function parameter"
+                ],
+                answer: 0,
+                explanation: "The 'in' keyword checks for membership (e.g., if 'a' in 'apple' returns True)."
+            },
+            {
+                question: "Which of these is the correct way to format a string with variables?",
+                options: [
+                    "print('Value: ' + str(x))",
+                    "print(f'Value: {x}')",
+                    "print('Value: %d' % x)",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "Python supports multiple string formatting methods, including concatenation, f-strings, and % formatting."
+            },
+            {
+                question: "What is the correct way to define a function in Python?",
+                options: [
+                    "function my_func():",
+                    "def my_func():",
+                    "define my_func():",
+                    "func my_func():"
+                ],
+                answer: 1,
+                explanation: "Functions are defined using the 'def' keyword followed by the function name and parentheses."
+            },
+            {
+                question: "What does *args allow you to do in a function?",
+                options: [
+                    "Accept keyword arguments",
+                    "Accept a variable number of non-keyword arguments",
+                    "Accept only integer arguments",
+                    "Accept arguments from the command line"
+                ],
+                answer: 1,
+                explanation: "*args allows a function to accept any number of non-keyword (positional) arguments."
+            },
+            {
+                question: "What is the purpose of **kwargs in a function definition?",
+                options: [
+                    "To accept a variable number of keyword arguments",
+                    "To accept only string arguments",
+                    "To accept arguments from a dictionary",
+                    "To accept a fixed number of arguments"
+                ],
+                answer: 0,
+                explanation: "**kwargs allows a function to accept any number of keyword arguments as a dictionary."
+            },
+            {
+                question: "Which keyword is used to return a value from a function?",
+                options: ["return", "output", "result", "yield"],
+                answer: 0,
+                explanation: "The 'return' statement exits a function and optionally passes back a value to the caller."
+            },
+            {
+                question: "What is a lambda function?",
+                options: [
+                    "A function that calls itself",
+                    "A large, complex function",
+                    "A small anonymous function",
+                    "A function that never returns"
+                ],
+                answer: 2,
+                explanation: "A lambda function is a small, anonymous function defined with the lambda keyword."
+            },
+            {
+                question: "Which collection type does NOT allow duplicate elements?",
+                options: ["List", "Tuple", "Set", "Dictionary"],
+                answer: 2,
+                explanation: "Sets are unordered collections of unique elements that do not allow duplicates."
+            },
+            {
+                question: "How do you access a value in a dictionary?",
+                options: [
+                    "By index position",
+                    "By key name",
+                    "By value",
+                    "By insertion order"
+                ],
+                answer: 1,
+                explanation: "Dictionary values are accessed using their associated keys (e.g., my_dict['key'])."
+            },
+            {
+                question: "Which method adds an element to the end of a list?",
+                options: ["insert()", "add()", "push()", "append()"],
+                answer: 3,
+                explanation: "The append() method adds an element to the end of a list."
+            },
+            {
+                question: "What is the main difference between lists and tuples?",
+                options: [
+                    "Lists are ordered, tuples are not",
+                    "Lists are immutable, tuples are mutable",
+                    "Lists are mutable, tuples are immutable",
+                    "Lists can only store numbers"
+                ],
+                answer: 2,
+                explanation: "The key difference is that lists are mutable (can be changed) while tuples are immutable (cannot be changed)."
+            },
+            {
+                question: "How do you create an empty set?",
+                options: ["{}", "set()", "[]", "new Set()"],
+                answer: 1,
+                explanation: "An empty set is created using set(). {} creates an empty dictionary."
+            },
+            {
+                question: "In OOP, what is a class?",
+                options: [
+                    "A collection of functions",
+                    "A blueprint for creating objects",
+                    "A built-in data type",
+                    "A special variable"
+                ],
+                answer: 1,
+                explanation: "A class is a blueprint for creating objects that defines their properties and behaviors."
+            },
+            {
+                question: "What is the correct way to define a class in Python?",
+                options: [
+                    "class MyClass:",
+                    "define MyClass:",
+                    "object MyClass:",
+                    "new class MyClass:"
+                ],
+                answer: 0,
+                explanation: "Classes are defined using the 'class' keyword followed by the class name and a colon."
+            },
+            {
+                question: "What does the __init__ method do?",
+                options: [
+                    "Initializes the class definition",
+                    "Destroys the object",
+                    "Initializes a new object instance",
+                    "Imports class dependencies"
+                ],
+                answer: 2,
+                explanation: "The __init__ method is the constructor that initializes a new object when it's created."
+            },
+            {
+                question: "Which of these is a popular Python web framework?",
+                options: ["Flask", "Pandas", "NumPy", "TensorFlow"],
+                answer: 0,
+                explanation: "Flask is a lightweight Python web framework. Pandas, NumPy, and TensorFlow are for data analysis and machine learning."
+            },
+            {
+                question: "What does sys.argv do?",
+                options: [
+                    "Accesses system variables",
+                    "Reads command-line arguments",
+                    "Manages virtual environments",
+                    "Imports modules"
+                ],
+                answer: 1,
+                explanation: "sys.argv is a list in Python that contains the command-line arguments passed to the script."
+            },
+            {
+                question: "Which of these is NOT a Python framework?",
+                options: ["Django", "Flask", "Pyramid", "Jango"],
+                answer: 3,
+                explanation: "Django, Flask, and Pyramid are Python web frameworks. Jango is not a real framework."
+            },
+            {
+                question: "What is the primary use of NumPy?",
+                options: [
+                    "Web development",
+                    "Data analysis",
+                    "Numerical computing",
+                    "Game development"
+                ],
+                answer: 2,
+                explanation: "NumPy is a library for numerical computing in Python, providing support for arrays and matrices."
+            },
+            {
+                question: "Which of these companies uses Python?",
+                options: ["Google", "Facebook", "Netflix", "All of the above"],
+                answer: 3,
+                explanation: "Python is widely used at Google, Facebook, Netflix, and many other major tech companies."
+            },
+            {
+                question: "What is the correct way to open a file in Python?",
+                options: [
+                    "open('file.txt', 'r')",
+                    "file.open('file.txt')",
+                    "read_file('file.txt')",
+                    "open_file('file.txt')"
+                ],
+                answer: 0,
+                explanation: "The built-in open() function is used to open files in Python."
+            },
+            {
+                question: "Which of these is a Python testing framework?",
+                options: ["JUnit", "pytest", "Mocha", "RSpec"],
+                answer: 1,
+                explanation: "pytest is a popular testing framework for Python."
+            },
+            {
+                question: "What is the output of: print(bool('False'))",
+                options: ["False", "True", "Error", "None"],
+                answer: 1,
+                explanation: "Any non-empty string is truthy in Python, so bool('False') returns True."
+            },
+            {
+                question: "Which method is used to read the entire content of a file?",
+                options: ["read()", "readline()", "readlines()", "readall()"],
+                answer: 0,
+                explanation: "The read() method reads the entire content of a file as a string."
+            },
+            {
+                question: "What is the purpose of the 'with' statement when opening files?",
+                options: [
+                    "To improve performance",
+                    "To automatically close the file",
+                    "To read the file faster",
+                    "To write binary data"
+                ],
+                answer: 1,
+                explanation: "The 'with' statement ensures that the file is properly closed after its suite finishes."
+            },
+            {
+                question: "What is the correct way to handle exceptions in Python?",
+                options: [
+                    "try: ... catch: ...",
+                    "try: ... except: ...",
+                    "try: ... handle: ...",
+                    "try: ... rescue: ..."
+                ],
+                answer: 1,
+                explanation: "Python uses try: ... except: ... for exception handling."
+            },
+            {
+                question: "Which of these is a valid list comprehension?",
+                options: [
+                    "[x*2 for x in range(5)]",
+                    "{x*2 for x in range(5)}",
+                    "(x*2 for x in range(5))",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "All are valid comprehensions - list, set, and generator comprehensions respectively."
+            },
+            {
+                question: "What is the purpose of the __name__ variable?",
+                options: [
+                    "To get the name of the current function",
+                    "To check if a module is being run directly",
+                    "To get the name of the class",
+                    "To access the namespace"
+                ],
+                answer: 1,
+                explanation: "__name__ is set to '__main__' when a module is run directly, allowing for conditional execution."
+            },
+            {
+                question: "Which of these is a mutable data type?",
+                options: ["Tuple", "String", "Frozenset", "List"],
+                answer: 3,
+                explanation: "Lists are mutable, meaning their elements can be changed after creation."
+            },
+            {
+                question: "What is the output of: print(round(3.75))",
+                options: ["3", "3.7", "4", "3.8"],
+                answer: 2,
+                explanation: "The round() function rounds to the nearest integer. 3.75 rounds up to 4."
+            },
+            {
+                question: "Which module is used for working with dates and times?",
+                options: ["time", "datetime", "calendar", "All of the above"],
+                answer: 3,
+                explanation: "Python provides the time, datetime, and calendar modules for working with dates and times."
+            },
+            {
+                question: "What does the 'yield' keyword do?",
+                options: [
+                    "Returns a value from a function",
+                    "Pauses a function and returns a generator",
+                    "Stops the function execution",
+                    "Yields control to another function"
+                ],
+                answer: 1,
+                explanation: "The yield keyword is used in generator functions to pause execution and return a value."
+            },
+            {
+                question: "Which of these is NOT a Python built-in function?",
+                options: ["print()", "input()", "console.log()", "len()"],
+                answer: 2,
+                explanation: "console.log() is a JavaScript function, not a Python built-in."
+            },
+            {
+                question: "What is the correct way to create a virtual environment?",
+                options: [
+                    "python -m venv myenv",
+                    "virtualenv myenv",
+                    "pip create myenv",
+                    "Both A and B"
+                ],
+                answer: 3,
+                explanation: "Both 'python -m venv myenv' and 'virtualenv myenv' are valid ways to create virtual environments."
+            },
+            {
+                question: "Which of these is a dictionary method?",
+                options: ["append()", "add()", "keys()", "push()"],
+                answer: 2,
+                explanation: "keys() is a dictionary method that returns a view of the dictionary's keys."
+            },
+            {
+                question: "What is the purpose of the 'self' parameter in class methods?",
+                options: [
+                    "It refers to the class itself",
+                    "It refers to the instance of the class",
+                    "It's a reference to the superclass",
+                    "It's optional and can be omitted"
+                ],
+                answer: 1,
+                explanation: "The 'self' parameter refers to the instance of the class and is passed automatically when calling a method."
+            },
+            {
+                question: "What is the correct way to comment multiple lines in Python?",
+                options: [
+                    "// This is a comment",
+                    "/* This is a comment */",
+                    "''' This is a comment '''",
+                    "# This is a comment"
+                ],
+                answer: 2,
+                explanation: "Multi-line comments in Python are created using triple quotes (''' or \"\"\")."
+            },
+            {
+                question: "Which of these is used to remove an item from a list by index?",
+                options: ["remove()", "pop()", "delete()", "discard()"],
+                answer: 1,
+                explanation: "The pop() method removes an item at the specified index from a list."
+            },
+            {
+                question: "What is the output of: print('Hello' + 3)",
+                options: ["Hello3", "HelloHelloHello", "TypeError", "Hello 3"],
+                answer: 2,
+                explanation: "You cannot concatenate a string and an integer directly in Python. This will raise a TypeError."
+            },
+            {
+                question: "Which method is used to convert a string to lowercase?",
+                options: ["lower()", "casefold()", "downcase()", "Both A and B"],
+                answer: 3,
+                explanation: "Both lower() and casefold() can be used to convert a string to lowercase, with casefold() being more aggressive for case-insensitive comparisons."
+            },
+            {
+                question: "What is the purpose of the __str__ method in a class?",
+                options: [
+                    "To return a string representation of the object",
+                    "To convert the object to a string",
+                    "To format the object for printing",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "The __str__ method returns a human-readable string representation of the object, used by print() and str()."
+            },
+            {
+                question: "Which of these is used to create a new directory?",
+                options: ["os.mkdir()", "os.makedirs()", "pathlib.Path.mkdir()", "All of the above"],
+                answer: 3,
+                explanation: "All of these can be used to create directories in Python, with different capabilities."
+            },
+            {
+                question: "What is the difference between 'is' and '==' in Python?",
+                options: [
+                    "'is' compares values, '==' compares identities",
+                    "'is' compares identities, '==' compares values",
+                    "They are identical",
+                    "'is' is for numbers, '==' is for strings"
+                ],
+                answer: 1,
+                explanation: "'is' checks if two variables refer to the same object (identity), while '==' checks if the objects have the same value."
+            },
+            {
+                question: "Which of these is NOT a valid way to create a list?",
+                options: [
+                    "list(1, 2, 3)",
+                    "[1, 2, 3]",
+                    "list(range(1, 4))",
+                    "list([1, 2, 3])"
+                ],
+                answer: 0,
+                explanation: "list() takes only one argument, so list(1, 2, 3) is invalid."
+            },
+            {
+                question: "What does the 'enumerate' function do?",
+                options: [
+                    "Counts the number of items in a sequence",
+                    "Adds a counter to an iterable",
+                    "Creates an enumeration object",
+                    "Lists all attributes of an object"
+                ],
+                answer: 1,
+                explanation: "enumerate() adds a counter to an iterable and returns it as an enumerate object."
+            },
+            {
+                question: "Which of these is used to create a dictionary?",
+                options: [
+                    "dict(a=1, b=2)",
+                    "{'a': 1, 'b': 2}",
+                    "dict(zip(['a', 'b'], [1, 2]))",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "All of these are valid ways to create dictionaries in Python."
+            },
+            {
+                question: "What is the purpose of the 'break' statement?",
+                options: [
+                    "To skip the current iteration of a loop",
+                    "To exit the current loop entirely",
+                    "To stop program execution",
+                    "To break a long line of code"
+                ],
+                answer: 1,
+                explanation: "The break statement is used to exit a for or while loop prematurely."
+            },
+            {
+                question: "Which of these is used to handle multiple exceptions?",
+                options: [
+                    "except (TypeError, ValueError):",
+                    "except TypeError or ValueError:",
+                    "except [TypeError, ValueError]:",
+                    "except TypeError, ValueError:"
+                ],
+                answer: 0,
+                explanation: "Multiple exceptions can be handled by specifying them in a tuple: except (TypeError, ValueError):"
+            },
+            {
+                question: "What is the correct way to import a module?",
+                options: [
+                    "import math",
+                    "from math import sqrt",
+                    "import math as m",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "All of these are valid ways to import modules or functions in Python."
+            },
+            {
+                question: "Which of these is used to remove whitespace from both ends of a string?",
+                options: ["trim()", "strip()", "clean()", "remove_whitespace()"],
+                answer: 1,
+                explanation: "The strip() method removes whitespace from both ends of a string."
+            },
+            {
+                question: "What is the purpose of the 'continue' statement?",
+                options: [
+                    "To proceed to the next iteration of a loop",
+                    "To exit the current function",
+                    "To skip the rest of the code in the current block",
+                    "To mark the end of a loop"
+                ],
+                answer: 0,
+                explanation: "The continue statement skips the rest of the code in the current iteration and proceeds to the next iteration of the loop."
+            },
+            {
+                question: "Which of these is used to reverse a list?",
+                options: ["reverse()", "reversed()", "list[::-1]", "All of the above"],
+                answer: 3,
+                explanation: "All of these can be used to reverse a list, with different approaches and return types."
+            },
+            {
+                question: "What is the output of: print('Python'[1:4])",
+                options: ["yth", "Pyt", "thon", "ytho"],
+                answer: 0,
+                explanation: "String slicing in Python includes the start index and excludes the end index, so 'Python'[1:4] returns 'yth'."
+            },
+            {
+                question: "Which of these is used to sort a list in-place?",
+                options: ["sorted()", "list.sort()", "sort(list)", "list.order()"],
+                answer: 1,
+                explanation: "The list.sort() method sorts the list in-place, while sorted() returns a new sorted list."
+            },
+            {
+                question: "What is the purpose of the 'else' clause in a loop?",
+                options: [
+                    "To execute code when the loop completes normally (without break)",
+                    "To handle exceptions in the loop",
+                    "To execute code when the loop condition becomes false",
+                    "To provide an alternative loop body"
+                ],
+                answer: 0,
+                explanation: "The else clause in a loop executes only if the loop completes normally without encountering a break statement."
+            },
+            {
+                question: "Which of these is used to convert a string to an integer?",
+                options: ["int()", "str_to_int()", "convert.int()", "parseInt()"],
+                answer: 0,
+                explanation: "The int() function is used to convert a string to an integer."
+            },
+            {
+                question: "What is the purpose of the 'finally' clause in exception handling?",
+                options: [
+                    "To handle an exception",
+                    "To execute code regardless of whether an exception occurred",
+                    "To catch all exceptions",
+                    "To define cleanup actions"
+                ],
+                answer: 1,
+                explanation: "The finally clause is executed regardless of whether an exception occurred or not, typically used for cleanup actions."
+            },
+            {
+                question: "Which of these is used to create a copy of a list?",
+                options: [
+                    "list.copy()",
+                    "list[:]",
+                    "copy.copy(list)",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "All of these methods can be used to create a shallow copy of a list."
+            },
+            {
+                question: "What is the purpose of the 'super()' function?",
+                options: [
+                    "To call a method in a superclass",
+                    "To create a superclass instance",
+                    "To access superclass attributes",
+                    "To define a superclass"
+                ],
+                answer: 0,
+                explanation: "The super() function is used to call a method in a superclass from a subclass."
+            },
+            {
+                question: "Which of these is used to check if a key exists in a dictionary?",
+                options: [
+                    "'key' in dict",
+                    "dict.has_key('key')",
+                    "dict.contains('key')",
+                    "dict.exists('key')"
+                ],
+                answer: 0,
+                explanation: "The 'in' operator is used to check if a key exists in a dictionary. (dict.has_key() was removed in Python 3)."
+            },
+            {
+                question: "What is the purpose of the 'zip' function?",
+                options: [
+                    "To compress files",
+                    "To combine multiple iterables element-wise",
+                    "To create a zip archive",
+                    "To iterate over dictionary keys"
+                ],
+                answer: 1,
+                explanation: "The zip() function combines elements from multiple iterables into tuples, stopping at the shortest iterable."
+            },
+            {
+                question: "Which of these is used to format strings with named placeholders?",
+                options: [
+                    "f-strings",
+                    "str.format() with named arguments",
+                    "Template strings",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "All of these can be used for string formatting with named placeholders."
+            },
+            {
+                question: "What is the purpose of the 'any' function?",
+                options: [
+                    "To check if any element in an iterable is true",
+                    "To apply a function to any element",
+                    "To return any element from a sequence",
+                    "To check for existence of any attribute"
+                ],
+                answer: 0,
+                explanation: "The any() function returns True if any element in the iterable is true."
+            },
+            {
+                question: "Which of these is used to remove an item from a set?",
+                options: ["remove()", "discard()", "pop()", "All of the above"],
+                answer: 3,
+                explanation: "All of these methods can remove items from a set, with different behaviors when the item doesn't exist."
+            },
+            {
+                question: "What is the correct way to create a class method?",
+                options: [
+                    "Using @classmethod decorator",
+                    "Using @staticmethod decorator",
+                    "Defining a method inside the class",
+                    "Using the 'classmethod' keyword"
+                ],
+                answer: 0,
+                explanation: "Class methods are created using the @classmethod decorator and take 'cls' as their first parameter."
+            },
+            {
+                question: "Which of these is used to get the current working directory?",
+                options: [
+                    "os.getcwd()",
+                    "os.path.curdir",
+                    "pathlib.Path.cwd()",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "All of these can be used to get the current working directory in Python."
+            }
+        ];
+
+        // Application state
+        let currentState = {
+            username: '',
+            questionCount: 10,
+            currentQuestionIndex: 0,
+            userAnswers: [],
+            quizStarted: false,
+            startTime: null,
+            endTime: null,
+            timerInterval: null,
+            timeRemaining: 60
+        };
+
+        // DOM Elements
+        const userInfoSection = document.getElementById('user-info-section');
+        const quizSection = document.getElementById('quiz-section');
+        const resultsSection = document.getElementById('results-section');
+        const usernameInput = document.getElementById('username');
+        const questionCountSelect = document.getElementById('question-count');
+        const startBtn = document.getElementById('start-btn');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const totalQuestionsSpan = document.getElementById('total-questions');
+        const timerElement = document.getElementById('timer');
+        const reviewContainer = document.getElementById('review-container');
+        const resultUsername = document.getElementById('result-username');
+        const scoreSpan = document.getElementById('score');
+        const totalSpan = document.getElementById('total');
+        const correctAnswersSpan = document.getElementById('correct-answers');
+        const percentageSpan = document.getElementById('percentage');
+        const timeTakenSpan = document.getElementById('time-taken');
+        const resultMessage = document.getElementById('result-message');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Initialize UI
+        quizSection.style.display = 'none';
+        resultsSection.style.display = 'none';
+
+        // Event Listeners
+        startBtn.addEventListener('click', startQuiz);
+        prevBtn.addEventListener('click', showPreviousQuestion);
+        nextBtn.addEventListener('click', showNextQuestion);
+        submitBtn.addEventListener('click', showResults);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Start the quiz
+        function startQuiz() {
+            const username = usernameInput.value.trim();
+            const questionCount = parseInt(questionCountSelect.value);
+            
+            if (!username) {
+                alert('Please enter your name');
+                return;
+            }
+            
+            currentState.username = username;
+            currentState.questionCount = questionCount;
+            currentState.currentQuestionIndex = 0;
+            currentState.quizStarted = true;
+            currentState.startTime = new Date();
+            currentState.timeRemaining = 60;
+            
+            // Initialize user answers array
+            currentState.userAnswers = Array(questionCount).fill(null);
+            
+            // Update UI
+            userInfoSection.style.display = 'none';
+            quizSection.style.display = 'block';
+            resultsSection.style.display = 'none';
+            
+            // Initialize progress bar
+            totalQuestionsSpan.textContent = questionCount;
+            updateProgressBar();
+            
+            // Start the timer
+            startTimer();
+            
+            // Show first question
+            showQuestion(currentState.currentQuestionIndex);
+        }
+
+        // Show a specific question
+        function showQuestion(index) {
+            const question = questions[index % questions.length];
+            
+            // Update navigation buttons
+            prevBtn.disabled = (index === 0);
+            nextBtn.disabled = (index === currentState.questionCount - 1);
+            submitBtn.style.display = (index === currentState.questionCount - 1) ? 'block' : 'none';
+            
+            // Update progress text
+            progressText.textContent = `Question ${index + 1} of ${currentState.questionCount}`;
+            
+            // Set question text
+            questionText.textContent = question.question;
+            
+            // Clear previous options
+            optionsContainer.innerHTML = '';
+            
+            // Add options
+            question.options.forEach((option, i) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                if (currentState.userAnswers[index] === i) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.innerHTML = `
+                    <div class="option-prefix">${String.fromCharCode(65 + i)}</div>
+                    <div class="option-text">${option}</div>
+                `;
+                
+                optionElement.addEventListener('click', () => {
+                    // Remove selection from other options
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selection to clicked option
+                    optionElement.classList.add('selected');
+                    
+                    // Save answer
+                    currentState.userAnswers[index] = i;
+                    updateProgressBar();
+                });
+                
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            updateProgressBar();
+        }
+
+        // Start the timer
+        function startTimer() {
+            clearInterval(currentState.timerInterval);
+            
+            currentState.timerInterval = setInterval(() => {
+                currentState.timeRemaining--;
+                timerElement.textContent = `${currentState.timeRemaining}s`;
+                
+                if (currentState.timeRemaining <= 0) {
+                    clearInterval(currentState.timerInterval);
+                    if (currentState.currentQuestionIndex < currentState.questionCount - 1) {
+                        showNextQuestion();
+                    } else {
+                        showResults();
+                    }
+                }
+            }, 1000);
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const answeredCount = currentState.userAnswers.filter(a => a !== null).length;
+            const total = currentState.questionCount;
+            const percentage = (answeredCount / total) * 100;
+            
+            progressBar.style.width = `${percentage}%`;
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentState.currentQuestionIndex > 0) {
+                currentState.currentQuestionIndex--;
+                currentState.timeRemaining = 60;
+                showQuestion(currentState.currentQuestionIndex);
+                startTimer();
+            }
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentState.currentQuestionIndex < currentState.questionCount - 1) {
+                currentState.currentQuestionIndex++;
+                currentState.timeRemaining = 60;
+                showQuestion(currentState.currentQuestionIndex);
+                startTimer();
+            }
+        }
+
+        // Show results
+        function showResults() {
+            clearInterval(currentState.timerInterval);
+            currentState.endTime = new Date();
+            
+            // Calculate time taken
+            const timeTaken = Math.floor((currentState.endTime - currentState.startTime) / 1000);
+            
+            // Calculate score
+            let score = 0;
+            
+            for (let i = 0; i < currentState.questionCount; i++) {
+                const question = questions[i % questions.length];
+                if (currentState.userAnswers[i] === question.answer) {
+                    score++;
+                }
+            }
+            
+            // Update UI
+            quizSection.style.display = 'none';
+            resultsSection.style.display = 'block';
+            
+            resultUsername.textContent = currentState.username;
+            scoreSpan.textContent = score;
+            totalSpan.textContent = currentState.questionCount;
+            correctAnswersSpan.textContent = score;
+            percentageSpan.textContent = Math.round((score / currentState.questionCount) * 100) + '%';
+            timeTakenSpan.textContent = timeTaken + 's';
+            
+            // Set result message
+            const percentage = (score / currentState.questionCount) * 100;
+            if (percentage >= 90) {
+                resultMessage.textContent = "Excellent! You're a Python Master!";
+            } else if (percentage >= 70) {
+                resultMessage.textContent = "Great job! You have strong Python knowledge!";
+            } else if (percentage >= 50) {
+                resultMessage.textContent = "Good effort! Keep learning and practicing!";
+            } else {
+                resultMessage.textContent = "Keep practicing! Review the concepts and try again!";
+            }
+            
+            // Show review of answers
+            let reviewHTML = '';
+            
+            for (let i = 0; i < currentState.questionCount; i++) {
+                const question = questions[i % questions.length];
+                const userAnswerIndex = currentState.userAnswers[i];
+                const isCorrect = userAnswerIndex === question.answer;
+                
+                reviewHTML += `
+                    <div class="review-item ${isCorrect ? 'correct' : 'incorrect'}">
+                        <div class="question-text">${i + 1}. ${question.question}</div>
+                        <p><strong>Your answer:</strong> ${userAnswerIndex !== null ? 
+                            String.fromCharCode(65 + userAnswerIndex) + '. ' + question.options[userAnswerIndex] : 
+                            'No answer'}</p>
+                        <p><strong>Correct answer:</strong> ${String.fromCharCode(65 + question.answer)}. ${question.options[question.answer]}</p>
+                        <div class="explanation">${question.explanation}</div>
+                    </div>
+                `;
+            }
+            
+            reviewContainer.innerHTML = reviewHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            resultsSection.style.display = 'none';
+            userInfoSection.style.display = 'block';
+            
+            // Reset state
+            currentState.username = '';
+            currentState.questionCount = 10;
+            currentState.currentQuestionIndex = 0;
+            currentState.userAnswers = [];
+            currentState.quizStarted = false;
+            currentState.timeRemaining = 60;
+            
+            // Reset form
+            usernameInput.value = '';
+            questionCountSelect.value = '10';
+        }
+    </script>
+</body>
+</html>

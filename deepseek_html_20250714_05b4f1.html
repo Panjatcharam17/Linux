@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Master Course Quiz</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #4fc3dc;
+            --light: #f5f7fa;
+            --dark: #2d3748;
+            --success: #48bb78;
+            --danger: #e53e3e;
+            --warning: #ed8936;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .question-container:last-child {
+            border-bottom: none;
+        }
+        
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        @media (min-width: 576px) {
+            .options-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .option {
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            background-color: #f8fafc;
+            border-color: var(--accent);
+        }
+        
+        .option.selected {
+            background-color: #ebf8ff;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .result-summary {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .result-score {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .result-message {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .review-container {
+            margin-top: 20px;
+        }
+        
+        .review-item {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+        
+        .correct {
+            border-left: 4px solid var(--success);
+        }
+        
+        .incorrect {
+            border-left: 4px solid var(--danger);
+        }
+        
+        .explanation {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            font-style: italic;
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+            background-color: #e2e8f0;
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-weight: 600;
+            margin-top: 10px;
+            color: var(--secondary);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--dark);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Python Master Course Quiz</h1>
+            <p>Test your knowledge of Python programming concepts</p>
+        </header>
+        
+        <!-- User Info Section -->
+        <section id="user-info-section" class="card">
+            <h2 class="section-title">Welcome to the Quiz!</h2>
+            <div class="form-group">
+                <label for="username">Enter Your Name:</label>
+                <input type="text" id="username" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="question-count">Number of Questions (1-100):</label>
+                <select id="question-count">
+                    <option value="10">10 Questions</option>
+                    <option value="20">20 Questions</option>
+                    <option value="30">30 Questions</option>
+                    <option value="50">50 Questions</option>
+                    <option value="100">100 Questions</option>
+                </select>
+            </div>
+            <button id="start-btn" class="btn btn-block">Start Quiz</button>
+        </section>
+        
+        <!-- Quiz Section -->
+        <section id="quiz-section" class="hidden">
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <p id="progress-text" class="progress-text">Question 1 of <span id="total-questions">10</span></p>
+            
+            <div id="quiz-container"></div>
+            
+            <div class="card">
+                <button id="prev-btn" class="btn">Previous</button>
+                <button id="next-btn" class="btn" style="float: right;">Next</button>
+                <button id="submit-btn" class="btn btn-block hidden">Submit Quiz</button>
+            </div>
+        </section>
+        
+        <!-- Results Section -->
+        <section id="results-section" class="hidden">
+            <div class="result-summary">
+                <h2>Quiz Results</h2>
+                <p id="user-greeting">Congratulations, <span id="result-username"></span>!</p>
+                <div class="result-score">
+                    <span id="score">0</span>/<span id="total">10</span>
+                </div>
+                <p class="result-message" id="result-message">Keep practicing!</p>
+            </div>
+            
+            <div class="card">
+                <h2 class="section-title">Review Your Answers</h2>
+                <div id="review-container"></div>
+                <button id="restart-btn" class="btn btn-block">Take Quiz Again</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Python Master Course Quiz &copy; 2023 | Test your Python knowledge</p>
+    </footer>
+
+    <script>
+        // Quiz questions data
+        const quizQuestions = [
+            // Python Basics (5 questions)
+            {
+                question: "In which year was Python first released?",
+                options: ["1989", "1991", "1995", "2000"],
+                answer: 1,
+                explanation: "Python was first released in February 1991 by Guido van Rossum."
+            },
+            {
+                question: "What does PEP stand for in Python?",
+                options: [
+                    "Python Enhancement Proposal",
+                    "Python Extension Package",
+                    "Programming Enhancement Process",
+                    "Python Execution Protocol"
+                ],
+                answer: 0,
+                explanation: "PEP stands for Python Enhancement Proposal. PEP 8 is the official style guide for Python."
+            },
+            {
+                question: "Which programming paradigms does Python support?",
+                options: [
+                    "Object-oriented only",
+                    "Procedural only",
+                    "Functional only",
+                    "Procedural, object-oriented, and functional"
+                ],
+                answer: 3,
+                explanation: "Python supports multiple programming paradigms including procedural, object-oriented, and functional programming."
+            },
+            {
+                question: "What is the primary purpose of Python's Virtual Machine (PVM)?",
+                options: [
+                    "To compile Python code to machine code",
+                    "To interpret bytecode and execute it",
+                    "To manage Python packages",
+                    "To optimize Python performance"
+                ],
+                answer: 1,
+                explanation: "The Python Virtual Machine (PVM) interprets bytecode and executes it on the host machine."
+            },
+            {
+                question: "What does 'Python is platform independent' mean?",
+                options: [
+                    "Python code runs only on Windows",
+                    "Python code runs only on Linux",
+                    "Python code can run on any operating system",
+                    "Python requires specific hardware"
+                ],
+                answer: 2,
+                explanation: "Platform independence means Python code can run on any operating system without modification."
+            },
+            
+            // Variables and Data Types (5 questions)
+            {
+                question: "Which of these is NOT a valid variable name in Python?",
+                options: ["my_var", "_counter", "123var", "user_name"],
+                answer: 2,
+                explanation: "Variable names cannot start with a number. '123var' is invalid."
+            },
+            {
+                question: "What will be the output of: print(type(3.14))",
+                options: ["<class 'int'>", "<class 'float'>", "<class 'decimal'>", "<class 'number'>"],
+                answer: 1,
+                explanation: "3.14 is a floating-point number, so type() returns <class 'float'>."
+            },
+            {
+                question: "Which data type is immutable in Python?",
+                options: ["List", "Dictionary", "Set", "Tuple"],
+                answer: 3,
+                explanation: "Tuples are immutable, meaning their elements cannot be changed after creation."
+            },
+            {
+                question: "What does the LEGB rule refer to in Python?",
+                options: [
+                    "Loop Execution and Global Behavior",
+                    "Local, Enclosing, Global, Built-in scopes",
+                    "List Element Grouping Basis",
+                    "Logical Expression and Grouping Blocks"
+                ],
+                answer: 1,
+                explanation: "The LEGB rule defines the scope resolution order: Local, Enclosing, Global, Built-in."
+            },
+            {
+                question: "What is the purpose of the 'global' keyword?",
+                options: [
+                    "To define a new global variable",
+                    "To access a global variable inside a function",
+                    "To make a variable accessible everywhere",
+                    "To modify a global variable inside a function"
+                ],
+                answer: 3,
+                explanation: "The 'global' keyword allows you to modify a global variable from within a function."
+            },
+            
+            // Operators and Control Flow (5 questions)
+            {
+                question: "What is the output of: print(5 // 2)",
+                options: ["2.5", "2", "3", "2.0"],
+                answer: 1,
+                explanation: "The // operator performs floor division, returning the integer quotient (5 ÷ 2 = 2)."
+            },
+            {
+                question: "Which operator is used for exponentiation in Python?",
+                options: ["^", "**", "^^", "exp()"],
+                answer: 1,
+                explanation: "The ** operator is used for exponentiation (e.g., 2**3 = 8)."
+            },
+            {
+                question: "What is the purpose of the 'pass' statement?",
+                options: [
+                    "To terminate a loop",
+                    "To skip the current iteration",
+                    "To exit a function",
+                    "To act as a placeholder"
+                ],
+                answer: 3,
+                explanation: "The 'pass' statement is a null operation used as a placeholder where syntax requires a statement."
+            },
+            {
+                question: "What does the 'in' keyword do?",
+                options: [
+                    "Checks if a value exists in a sequence",
+                    "Creates a loop",
+                    "Imports a module",
+                    "Defines a function parameter"
+                ],
+                answer: 0,
+                explanation: "The 'in' keyword checks for membership (e.g., if 'a' in 'apple' returns True)."
+            },
+            {
+                question: "Which of these is the correct way to format a string with variables?",
+                options: [
+                    "print('Value: ' + str(x))",
+                    "print(f'Value: {x}')",
+                    "print('Value: %d' % x)",
+                    "All of the above"
+                ],
+                answer: 3,
+                explanation: "Python supports multiple string formatting methods, including concatenation, f-strings, and % formatting."
+            },
+            
+            // Functions (5 questions)
+            {
+                question: "What is the correct way to define a function in Python?",
+                options: [
+                    "function my_func():",
+                    "def my_func():",
+                    "define my_func():",
+                    "func my_func():"
+                ],
+                answer: 1,
+                explanation: "Functions are defined using the 'def' keyword followed by the function name and parentheses."
+            },
+            {
+                question: "What does *args allow you to do in a function?",
+                options: [
+                    "Accept keyword arguments",
+                    "Accept a variable number of non-keyword arguments",
+                    "Accept only integer arguments",
+                    "Accept arguments from the command line"
+                ],
+                answer: 1,
+                explanation: "*args allows a function to accept any number of non-keyword (positional) arguments."
+            },
+            {
+                question: "What is the purpose of **kwargs in a function definition?",
+                options: [
+                    "To accept a variable number of keyword arguments",
+                    "To accept only string arguments",
+                    "To accept arguments from a dictionary",
+                    "To accept a fixed number of arguments"
+                ],
+                answer: 0,
+                explanation: "**kwargs allows a function to accept any number of keyword arguments as a dictionary."
+            },
+            {
+                question: "Which keyword is used to return a value from a function?",
+                options: ["return", "output", "result", "yield"],
+                answer: 0,
+                explanation: "The 'return' statement exits a function and optionally passes back a value to the caller."
+            },
+            {
+                question: "What is a lambda function?",
+                options: [
+                    "A function that calls itself",
+                    "A large, complex function",
+                    "A small anonymous function",
+                    "A function that never returns"
+                ],
+                answer: 2,
+                explanation: "A lambda function is a small, anonymous function defined with the lambda keyword."
+            },
+            
+            // Collections and Data Structures (5 questions)
+            {
+                question: "Which collection type does NOT allow duplicate elements?",
+                options: ["List", "Tuple", "Set", "Dictionary"],
+                answer: 2,
+                explanation: "Sets are unordered collections of unique elements that do not allow duplicates."
+            },
+            {
+                question: "How do you access a value in a dictionary?",
+                options: [
+                    "By index position",
+                    "By key name",
+                    "By value",
+                    "By insertion order"
+                ],
+                answer: 1,
+                explanation: "Dictionary values are accessed using their associated keys (e.g., my_dict['key'])."
+            },
+            {
+                question: "Which method adds an element to the end of a list?",
+                options: ["insert()", "add()", "push()", "append()"],
+                answer: 3,
+                explanation: "The append() method adds an element to the end of a list."
+            },
+            {
+                question: "What is the main difference between lists and tuples?",
+                options: [
+                    "Lists are ordered, tuples are not",
+                    "Lists are immutable, tuples are mutable",
+                    "Lists are mutable, tuples are immutable",
+                    "Lists can only store numbers"
+                ],
+                answer: 2,
+                explanation: "The key difference is that lists are mutable (can be changed) while tuples are immutable (cannot be changed)."
+            },
+            {
+                question: "How do you create an empty set?",
+                options: [
+                    "{}",
+                    "set()",
+                    "[]",
+                    "new Set()"
+                ],
+                answer: 1,
+                explanation: "An empty set is created using set(). {} creates an empty dictionary."
+            },
+            
+            // OOP and Advanced Concepts (5 questions)
+            {
+                question: "In OOP, what is a class?",
+                options: [
+                    "A collection of functions",
+                    "A blueprint for creating objects",
+                    "A built-in data type",
+                    "A special variable"
+                ],
+                answer: 1,
+                explanation: "A class is a blueprint for creating objects that defines their properties and behaviors."
+            },
+            {
+                question: "What is the correct way to define a class in Python?",
+                options: [
+                    "class MyClass:",
+                    "define MyClass:",
+                    "object MyClass:",
+                    "new class MyClass:"
+                ],
+                answer: 0,
+                explanation: "Classes are defined using the 'class' keyword followed by the class name and a colon."
+            },
+            {
+                question: "What does the __init__ method do?",
+                options: [
+                    "Initializes the class definition",
+                    "Destroys the object",
+                    "Initializes a new object instance",
+                    "Imports class dependencies"
+                ],
+                answer: 2,
+                explanation: "The __init__ method is the constructor that initializes a new object when it's created."
+            },
+            {
+                question: "Which of these is a popular Python web framework?",
+                options: ["Flask", "Pandas", "NumPy", "TensorFlow"],
+                answer: 0,
+                explanation: "Flask is a lightweight Python web framework. Pandas, NumPy, and TensorFlow are for data analysis and machine learning."
+            },
+            {
+                question: "What does sys.argv do?",
+                options: [
+                    "Accesses system variables",
+                    "Reads command-line arguments",
+                    "Manages virtual environments",
+                    "Imports modules"
+                ],
+                answer: 1,
+                explanation: "sys.argv is a list in Python that contains the command-line arguments passed to the script."
+            }
+        ];
+
+        // Application state
+        let currentState = {
+            username: '',
+            questionCount: 10,
+            currentQuestionIndex: 0,
+            userAnswers: [],
+            quizStarted: false
+        };
+
+        // DOM Elements
+        const userInfoSection = document.getElementById('user-info-section');
+        const quizSection = document.getElementById('quiz-section');
+        const resultsSection = document.getElementById('results-section');
+        const usernameInput = document.getElementById('username');
+        const questionCountSelect = document.getElementById('question-count');
+        const startBtn = document.getElementById('start-btn');
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const totalQuestionsSpan = document.getElementById('total-questions');
+        const reviewContainer = document.getElementById('review-container');
+        const resultUsername = document.getElementById('result-username');
+        const scoreSpan = document.getElementById('score');
+        const totalSpan = document.getElementById('total');
+        const resultMessage = document.getElementById('result-message');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Event Listeners
+        startBtn.addEventListener('click', startQuiz);
+        prevBtn.addEventListener('click', showPreviousQuestion);
+        nextBtn.addEventListener('click', showNextQuestion);
+        submitBtn.addEventListener('click', showResults);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize application
+        function init() {
+            // Initialize with default state
+            currentState.userAnswers = Array(quizQuestions.length).fill(null);
+        }
+
+        // Start the quiz
+        function startQuiz() {
+            const username = usernameInput.value.trim();
+            const questionCount = parseInt(questionCountSelect.value);
+            
+            if (!username) {
+                alert('Please enter your name');
+                return;
+            }
+            
+            currentState.username = username;
+            currentState.questionCount = questionCount;
+            currentState.currentQuestionIndex = 0;
+            currentState.quizStarted = true;
+            
+            // Initialize user answers array
+            currentState.userAnswers = Array(questionCount).fill(null);
+            
+            // Update UI
+            userInfoSection.classList.add('hidden');
+            quizSection.classList.remove('hidden');
+            
+            // Initialize progress bar
+            totalQuestionsSpan.textContent = questionCount;
+            updateProgressBar();
+            
+            // Show first question
+            showQuestion(currentState.currentQuestionIndex);
+        }
+
+        // Show a specific question
+        function showQuestion(index) {
+            const questionCount = currentState.questionCount;
+            
+            // Get the question to display (using modulo to loop through questions)
+            const question = quizQuestions[index % quizQuestions.length];
+            
+            // Update navigation buttons
+            prevBtn.disabled = (index === 0);
+            nextBtn.disabled = (index === questionCount - 1);
+            submitBtn.classList.toggle('hidden', index !== questionCount - 1);
+            
+            // Update progress text
+            progressText.textContent = `Question ${index + 1} of ${questionCount}`;
+            
+            // Create question HTML
+            let questionHTML = `
+                <div class="card">
+                    <div class="question-container">
+                        <div class="question-text">${index + 1}. ${question.question}</div>
+                        <div class="options-container">
+            `;
+            
+            // Add options
+            question.options.forEach((option, i) => {
+                const isSelected = currentState.userAnswers[index] === i;
+                questionHTML += `
+                    <div class="option ${isSelected ? 'selected' : ''}" data-index="${i}">
+                        ${String.fromCharCode(65 + i)}. ${option}
+                    </div>
+                `;
+            });
+            
+            questionHTML += `
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            quizContainer.innerHTML = questionHTML;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove selection from other options
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selection to clicked option
+                    option.classList.add('selected');
+                    
+                    // Save answer
+                    const answerIndex = parseInt(option.getAttribute('data-index'));
+                    currentState.userAnswers[index] = answerIndex;
+                });
+            });
+            
+            updateProgressBar();
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const answeredCount = currentState.userAnswers.filter(a => a !== null).length;
+            const total = currentState.questionCount;
+            const percentage = (answeredCount / total) * 100;
+            
+            progressBar.style.width = `${percentage}%`;
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentState.currentQuestionIndex > 0) {
+                currentState.currentQuestionIndex--;
+                showQuestion(currentState.currentQuestionIndex);
+            }
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentState.currentQuestionIndex < currentState.questionCount - 1) {
+                currentState.currentQuestionIndex++;
+                showQuestion(currentState.currentQuestionIndex);
+            }
+        }
+
+        // Show results
+        function showResults() {
+            // Calculate score
+            let score = 0;
+            
+            for (let i = 0; i < currentState.questionCount; i++) {
+                const question = quizQuestions[i % quizQuestions.length];
+                if (currentState.userAnswers[i] === question.answer) {
+                    score++;
+                }
+            }
+            
+            // Update UI
+            quizSection.classList.add('hidden');
+            resultsSection.classList.remove('hidden');
+            
+            resultUsername.textContent = currentState.username;
+            scoreSpan.textContent = score;
+            totalSpan.textContent = currentState.questionCount;
+            
+            // Set result message
+            const percentage = (score / currentState.questionCount) * 100;
+            if (percentage >= 90) {
+                resultMessage.textContent = "Excellent! You're a Python Master!";
+            } else if (percentage >= 70) {
+                resultMessage.textContent = "Great job! You have strong Python knowledge!";
+            } else if (percentage >= 50) {
+                resultMessage.textContent = "Good effort! Keep learning and practicing!";
+            } else {
+                resultMessage.textContent = "Keep practicing! Review the concepts and try again!";
+            }
+            
+            // Show review of answers
+            let reviewHTML = '';
+            
+            for (let i = 0; i < currentState.questionCount; i++) {
+                const question = quizQuestions[i % quizQuestions.length];
+                const userAnswerIndex = currentState.userAnswers[i];
+                const isCorrect = userAnswerIndex === question.answer;
+                
+                reviewHTML += `
+                    <div class="review-item ${isCorrect ? 'correct' : 'incorrect'}">
+                        <div class="question-text">${i + 1}. ${question.question}</div>
+                        <p><strong>Your answer:</strong> ${userAnswerIndex !== null ? 
+                            String.fromCharCode(65 + userAnswerIndex) + '. ' + question.options[userAnswerIndex] : 
+                            'No answer'}</p>
+                        <p><strong>Correct answer:</strong> ${String.fromCharCode(65 + question.answer)}. ${question.options[question.answer]}</p>
+                        <div class="explanation">${question.explanation}</div>
+                    </div>
+                `;
+            }
+            
+            reviewContainer.innerHTML = reviewHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            resultsSection.classList.add('hidden');
+            userInfoSection.classList.remove('hidden');
+            
+            // Reset state
+            currentState.username = '';
+            currentState.questionCount = 10;
+            currentState.currentQuestionIndex = 0;
+            currentState.userAnswers = [];
+            currentState.quizStarted = false;
+            
+            // Reset form
+            usernameInput.value = '';
+            questionCountSelect.value = '10';
+        }
+
+        // Initialize the application
+        init();
+    </script>
+</body>
+</html>

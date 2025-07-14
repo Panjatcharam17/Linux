@@ -1,0 +1,1102 @@
+[
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)? ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f()) ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?  ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())     ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())     ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())     ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)? ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?     ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)? ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?  ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?   ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?    ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return? ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?     ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f()) ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f()) ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "Which of the following is a valid variable name in Python?",
+        "options": [
+            "1variable",
+            "_variable",
+            "variable-name",
+            "variable name"
+        ],
+        "answer": 1,
+        "explanation": "Variable names can start with an underscore or letter, but not with a number or contain hyphens/spaces."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?    ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?      ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?  ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f()) ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "Which of the following is a valid variable name in Python? ",
+        "options": [
+            "1variable",
+            "_variable",
+            "variable-name",
+            "variable name"
+        ],
+        "answer": 1,
+        "explanation": "Variable names can start with an underscore or letter, but not with a number or contain hyphens/spaces."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return? ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?  ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?  ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?  ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?  ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?  ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?  ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?   ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f()) ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?    ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return? ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?    ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())     ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?     ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())      ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())   ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?  ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return? ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f()) ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?   ",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?  ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f()) ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What is the result of: x = 10; y = x; x = 20; print(y)?",
+        "options": [
+            "10",
+            "20",
+            "None",
+            "Error"
+        ],
+        "answer": 0,
+        "explanation": "The value of y was copied from x before x was changed, so y remains 10."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())    ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    },
+    {
+        "question": "What does the expression 'abc' * 3 return?   ",
+        "options": [
+            "abcabcabc",
+            "abc*3",
+            "Syntax Error",
+            "abc abc abc"
+        ],
+        "answer": 0,
+        "explanation": "In Python, multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What is the output of: def f(): return 1; print(f())  ",
+        "options": [
+            "None",
+            "1",
+            "f()",
+            "Error"
+        ],
+        "answer": 1,
+        "explanation": "The function returns 1 and print outputs it."
+    }
+]
