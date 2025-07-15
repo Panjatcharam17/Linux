@@ -1,0 +1,31 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Start Screen: Enter name and number of questions -->
+  <div id="start-screen" class="centered-container">
+    <h1>Welcome to the Python Quiz</h1>
+    <input type="text" id="username" placeholder="Enter your name">
+    <input type="number" id="numQuestions" placeholder="Number of questions (max 100)" min="1" max="100">
+    <button id="start-btn">Start Quiz</button>
+  </div>
+
+  <!-- Quiz Container (initially hidden) -->
+  <div id="quiz-container" class="centered-container hidden">
+    <!-- Quiz questions will be injected here by script.js -->
+  </div>
+
+  <!-- Result Container (initially hidden) -->
+  <div id="result-container" class="centered-container hidden">
+    <!-- Results will be shown here after submission -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

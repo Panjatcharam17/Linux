@@ -1,0 +1,323 @@
+// questions.json
+[
+  {
+    "question": "Which of the following commands will create a list?",
+    "options": [
+      "list1 = list()",
+      "list1 = []",
+      "list1 = list([1, 2, 3])",
+      "All of the above"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "What is the data type of the variable \"x\" in the following code? x = 5",
+    "options": ["Integer", "String", "Float", "Boolean"],
+    "answer": 0
+  },
+  {
+    "question": "What will be the output of the following code? x = \"Hello\"; print(type(x))",
+    "options": ["hello", "str", "string", "String"],
+    "answer": 1
+  },
+  {
+    "question": "Which data type in Python is used to store a sequence of characters?",
+    "options": ["Integer", "Float", "String", "Boolean"],
+    "answer": 2
+  },
+  {
+    "question": "What is the output of the following code? x = 3.14; print(type(x))",
+    "options": ["int", "Integer", "float", "Float"],
+    "answer": 2
+  },
+  {
+    "question": "Which data type is used to store a collection of items indexed by keys?",
+    "options": ["List", "Tuple", "Set", "Dictionary"],
+    "answer": 3
+  },
+  {
+    "question": "What will be the output of the following code? x = 10; y = \"20\"; print(x + int(y))",
+    "options": ["30", "1020", "\"1020\"", "Error"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following is mutable in Python?",
+    "options": ["String", "Tuple", "Set", "None of the above"],
+    "answer": 0
+  },
+  {
+    "question": "What is the output of the following code? x = {\"apple\", \"banana\", \"cherry\"}; print(type(x))",
+    "options": ["list", "tuple", "dict", "set"],
+    "answer": 3
+  },
+  {
+    "question": "Which of the following is used to check if a value exists in a list?",
+    "options": ["exists", "in", "contains", "find"],
+    "answer": 1
+  },
+  {
+    "question": "What is the correct way to declare a function in Python?",
+    "options": ["function myFunc():", "def myFunc():", "func myFunc():", "declare myFunc():"],
+    "answer": 1
+  },
+  {
+    "question": "What is the primary purpose of a function in Python?",
+    "options": [
+      "To execute a block of code repeatedly",
+      "To organize code into reusable units",
+      "To perform arithmetic operations",
+      "To define conditional statements"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What keyword is used to define a function in Python?",
+    "options": ["def", "function", "define", "fun"],
+    "answer": 0
+  },
+  {
+    "question": "What does the `return` statement do in a function?",
+    "options": [
+      "Stop execution of the function",
+      "Print a value to the console",
+      "Return a value to the caller",
+      "Define a recursive function"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What will be the output of the following code?\n def add(a, b):\n   return a + b\n result = add(3,5)\n print(result)",
+    "options": ["8", "3+5", "35", "None"],
+    "answer": 0
+  },
+  {
+    "question": "What will be printed by this code?\n def greet(name):\n   print(\"Hello, \" + name + \"!\")\n greet(\"Alice\")",
+    "options": ["Hello, Alice!", "Hello, name!", "Alice", "None"],
+    "answer": 0
+  },
+  {
+    "question": "What is the purpose of the **kwargs parameter in a function?",
+    "options": [
+      "To accept a variable number of positional arguments",
+      "To accept keyword arguments as a dictionary",
+      "To specify default values for keyword arguments",
+      "To raise an exception"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following data structures is immutable?",
+    "options": ["List", "Tuple", "Set", "Dictionary"],
+    "answer": 1
+  },
+  {
+    "question": "What is the scope of a global variable in Python?",
+    "options": [
+      "Function it is defined in",
+      "Module it is defined in",
+      "Class it is defined in",
+      "Block it is defined in"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the output of the following code?\n x = [1,2,3]\n y = x.copy()\n x.append(4)\n print(y)",
+    "options": ["[1,2,3]", "[1,2,3,4]", "[4]", "Error"],
+    "answer": 0
+  },
+  {
+    "question": "What will be the result of `{'a', 'b'} & {'b', 'c'}`?",
+    "options": ["{'a'}", "{'b'}", "{'c'}", "{'a','c'}"],
+    "answer": 1
+  },
+  {
+    "question": "How do you swap two variables `x` and `y` without using a third variable?",
+    "options": [
+      "x=y; y=x",
+      "x, y = y, x",
+      "temp=x; x=y; y=temp",
+      "Not possible"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What does the `pop()` method do on a Python dictionary?",
+    "options": [
+      "Removes and returns the last item",
+      "Removes and returns the item with a specified key",
+      "Removes and returns the first item",
+      "Removes and returns the item at a specified index"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following is NOT a method of a Python dictionary?",
+    "options": ["add()", "update()", "keys()", "get()"],
+    "answer": 0
+  },
+  {
+    "question": "What does `my_dict.get('b', 0)` return for `my_dict = {'a':1, 'b':2, 'c':3}`?",
+    "options": ["1", "2", "3", "0"],
+    "answer": 1
+  },
+  {
+    "question": "Which method returns all keys of a dictionary?",
+    "options": ["keys()", "get_keys()", "list()", "values()"],
+    "answer": 0
+  },
+  {
+    "question": "What is the output of `print(my_dict.keys())` for `{'a':1,'b':2}`?",
+    "options": [
+      "['a','b']",
+      "('a','b')",
+      "dict_keys(['a','b'])",
+      "{'a','b'}"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which method returns all values of a dictionary?",
+    "options": ["values()", "get_values()", "list()", "keys()"],
+    "answer": 0
+  },
+  {
+    "question": "What is the output of `print(my_dict.values())` for `{'a':1,'b':2}`?",
+    "options": [
+      "[1,2]",
+      "(1,2)",
+      "dict_values([1,2])",
+      "{1,2}"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which method returns all (key, value) pairs of a dictionary?",
+    "options": ["items()", "get_items()", "pairs()", "keys()"],
+    "answer": 0
+  },
+  {
+    "question": "What is the output of `print(my_dict.items())` for `{'a':1,'b':2}`?",
+    "options": [
+      "[('a',1),('b',2)]",
+      "(('a',1),('b',2))",
+      "dict_items([('a',1),('b',2)])",
+      "{('a',1),('b',2)}"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which method removes a key-value pair from a dictionary?",
+    "options": ["remove()", "delete()", "pop()", "discard()"],
+    "answer": 2
+  },
+  {
+    "question": "What is the output of `my_dict.pop('b')` for `{'a':1,'b':2}`?",
+    "options": ["1", "2", "3", "{'a':1}"],
+    "answer": 1
+  },
+  {
+    "question": "Which method clears all items from a dictionary?",
+    "options": ["clear()", "delete_all()", "remove_all()", "empty()"],
+    "answer": 0
+  },
+  {
+    "question": "What is the output after `my_dict.clear(); print(my_dict)` for `{'a':1,'b':2}`?",
+    "options": ["{}", "{'a':1,'b':2}", "[]", "None"],
+    "answer": 0
+  },
+  {
+    "question": "Which method updates a dictionary with another dictionary's items?",
+    "options": ["merge()", "update()", "append()", "extend()"],
+    "answer": 1
+  },
+  {
+    "question": "What is the result of the following code?\n dict1 = {'a':1,'b':2}\n dict2 = {'b':3,'c':4}\n dict1.update(dict2)\n print(dict1)",
+    "options": [
+      "{'a':1,'b':2,'c':4}",
+      "{'a':1,'b':3,'c':4}",
+      "{'a':1,'b':3}",
+      "{'a':1,'b':2,'c':3}"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which statement about dictionaries is true?",
+    "options": [
+      "Dictionaries are ordered collections",
+      "Dictionaries can have duplicate keys",
+      "Dictionaries are indexed by integers",
+      "Dictionaries are immutable"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What does the `open()` function do in Python?",
+    "options": [
+      "Open a file for reading or writing",
+      "Open a network connection",
+      "Execute a file",
+      "None of the above"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which mode is used to open a file for writing in Python?",
+    "options": ["r", "w", "a", "x"],
+    "answer": 1
+  },
+  {
+    "question": "Which function reads the entire contents of a file as a string?",
+    "options": ["read_file()", "readlines()", "read()", "read_string()"],
+    "answer": 2
+  },
+  {
+    "question": "What does `readline()` do in Python?",
+    "options": [
+      "Reads the entire file as a string",
+      "Reads a specific line from the file",
+      "Reads all lines into a list",
+      "Reads the first line of the file"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Which mode opens a file for appending in Python?",
+    "options": ["r", "w", "a", "x"],
+    "answer": 2
+  },
+  {
+    "question": "What is the purpose of `close()` on a file object?",
+    "options": [
+      "Close the file and free resources",
+      "Rename the file",
+      "Delete the file",
+      "Flush data to disk"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which method writes data to an open file in Python?",
+    "options": ["write()", "append()", "insert()", "output()"],
+    "answer": 0
+  },
+  {
+    "question": "What does the `with` statement do when opening files?",
+    "options": [
+      "It opens a file for reading only",
+      "It ensures the file is closed automatically",
+      "It opens a file and keeps it open",
+      "It has no effect"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the difference between 'r' and 'rb' modes in file handling?",
+    "options": [
+      "None",
+      "'r' is text mode, 'rb' is binary mode",
+      "'rb' is text mode, 'r' is binary mode",
+      "'r' is read mode, 'rb' is read-write mode"
+    ],
+    "answer": 1
+  }
+]

@@ -11,7 +11,7 @@ trip = {
 }
 
 print(trip["pickup"])   # it will take it as a key 
-print(trip.get("Ozhugur"))
+print(trip.get("Ozhugur"))  # safe way to use if the value is not present it will show none
 
 print(trip.keys())
 print(trip.values())
@@ -53,6 +53,7 @@ for trip in trips:
     
 """
 #two ways by one using it as dictionary
+# we should define the key before we use multiple dictionary
 trips = {
     "UB01": {"trip_id" : "UB01", "pickup" : "chennai", "drop" : "home", "fare" : "500"},
     "UB02": {"trip_id" : "UB02", "pickup" : "kanchipuram", "drop" : "walaja", "fare" : "200"},
